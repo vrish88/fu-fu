@@ -49,6 +49,11 @@ module ProfanityFilter
       def clean_word_basic(word)
         dictionary.include?(word.downcase.squeeze) && word.size > 2 ? replacement_text : word
       end
+      
+      def profane?(text)
+        return false if text.blank?
+        text.split(/(\W)/).none?{|word| dictionary.include?(word.downcase.sqeeze) && word.size > 2 }
+      end
     end
   end
 end
