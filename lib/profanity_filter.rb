@@ -52,7 +52,7 @@ module ProfanityFilter
       
       def profane?(text)
         return false if text.blank?
-        text.split(/(\W)/).none?{|word| dictionary.include?(word.downcase.sqeeze) && word.size > 2 }
+        not text.split(/(\W)/).none?{|word| dictionary.include?(word.downcase.squeeze) && word.size > 2 }
       end
     end
   end
